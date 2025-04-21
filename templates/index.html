@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arlington Organic Market</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #1a1d20;
+      }
+      .card {
+        background-color: #242729;
+        border-color: #2d3238;
+      }
+      .card-header {
+        background-color: #2d3238;
+        border-bottom-color: #373d44;
+      }
+      h1,
+      h5 {
+        color: #e9ecef;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1 class="text-center mb-5">Arlington Organic Market</h1>
+
+      <div class="row g-4">
+        <!-- Basic Operations -->
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h3 class="card-title h5 mb-0">Basic Operations</h3>
+            </div>
+            <div class="card-body">
+              <div class="d-grid gap-3">
+                <div>
+                  <h5>Add New Product</h5>
+                  <form action="/add_product" method="POST" class="mb-4">
+                    <div class="card mb-3">
+                      <div class="card-header">
+                        <h6 class="mb-0">Product Information</h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="product_name"
+                            placeholder="Product Name"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <input
+                            type="number"
+                            class="form-control"
+                            name="product_price"
+                            placeholder="Price"
+                            step="0.01"
+                            min="0"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <input
+                            type="number"
+                            class="form-control"
+                            name="product_quantity"
+                            placeholder="Quantity"
+                            min="0"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <select
+                            class="form-select"
+                            name="product_category"
+                            required
+                          >
+                            <option value="" disabled selected>
+                              Select Category
+                            </option>
+                            <option value="Nuts">Nuts</option>
+                            <option value="Sprouts">Sprouts</option>
+                            <option value="Fruits">Fruits</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card mb-3">
+                      <div class="card-header">
+                        <h6 class="mb-0">Vendor Information</h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="vendor_name"
+                            placeholder="Vendor Name"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="vendor_street"
+                            placeholder="Street Address"
+                            required
+                          />
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="vendor_city"
+                              placeholder="City"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-4">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="vendor_state"
+                              placeholder="State"
+                              maxlength="2"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-4">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="vendor_zip"
+                              placeholder="ZIP Code"
+                              pattern="[0-9]{5}"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success w-40">
+                      Add Product
+                    </button>
+                  </form>
+                  <form action="/store_products" method="GET">
+                    <button type="submit" class="btn btn-outline-info w-40">
+                      View Products
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h3 class="card-title h5 mb-0">Analytics Dashboard</h3>
+            </div>
+            <div class="card-body">
+              <div class="d-grid gap-3">
+                <div>
+                  <h5>QV1: Top 3 Revenue-Generating Items</h5>
+                  <form action="/top_revenue_items" method="GET">
+                    <button type="submit" class="btn btn-outline-success">
+                      Show Top 3 Items
+                    </button>
+                  </form>
+                </div>
+
+                <div>
+                  <h5>QV2: Items Sold More Than 50 Units</h5>
+                  <form action="/popular_items" method="GET">
+                    <button type="submit" class="btn btn-outline-success">
+                      Show Popular Items
+                    </button>
+                  </form>
+                </div>
+
+                <div>
+                  <h5>QV3: Customer with Highest Loyalty Score</h5>
+                  <form action="/top_customer" method="GET">
+                    <button type="submit" class="btn btn-outline-success">
+                      Show Top Customer
+                    </button>
+                  </form>
+                </div>
+
+                <div>
+                  <h5>QV4: Customers with Loyalty Score 4-5</h5>
+                  <form action="/loyal_customers_4_5" method="GET">
+                    <button type="submit" class="btn btn-outline-success">
+                      Show Loyal Customers
+                    </button>
+                  </form>
+                </div>
+
+                <div>
+                  <h5>QV5: Total Revenue Generated</h5>
+                  <form action="/total_revenue" method="GET">
+                    <button type="submit" class="btn btn-outline-success">
+                      Show Total Revenue
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
